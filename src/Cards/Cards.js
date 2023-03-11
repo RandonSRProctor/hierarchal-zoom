@@ -10,26 +10,27 @@ function assertDimensionObject(numberOfCards) {
 }
 
 export function Cards({ cardsInfo, levelsDeep, recursionCount }) {
-  function handleOnClick(index) {
-    setSelectedCardIndex(index);
-    console.log(index);
+  function handleOnClick(selectedCard) {
+    setCardsToShow(cardsToShow.filter((card) => card === selectedCard));
+    console.log(selectedCard);
   }
-  function handleOnClickCreator(key) {
-    return () => {
-      handleOnClick(key);
-    };
-  }
+
   throwNullOrUndefined(cardsInfo, levelsDeep);
-  const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  const [cardsToShow, setCardsToShow] = useState(cardsInfo);
   const arrayOfCards = [];
   for (let i = 0; i < cardsInfo.length; i++) {
+    const isCardSelected = cardsToShow.includes(cardsInfo[i]);
     arrayOfCards.push(
       <Card
-        isHidden={selectedCardIndex === i}
-        onClickSelector={handleOnClickCreator(i)}
+        isHidden={!isCardSelected}
+        onClickSelector={() => handleOnClick(cardsInfo[i])}
         text={cardsInfo[i]}
         key={i}
-        styleDimensions={assertDimensionObject(cardsInfo.length)}
+        styleDimensions={
+          isCardSelected
+            ? { width: "100%" }
+            : assertDimensionObject(cardsInfo.length)
+        }
         recursionCount={recursionCount - 1}
       />
     );

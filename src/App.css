@@ -14,7 +14,6 @@
   border-radius: 5px;
   height: 50%;
   display: flex;
-
   align-items: center;
 }
 
@@ -44,4 +43,5 @@
 .selected-card {
   border: solid orange 1px;
   height: 100%;
+  width: 100%;
 }

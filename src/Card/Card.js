@@ -10,13 +10,15 @@ export function Card({
   recursionCount,
 }) {
   function handleOnClick(event) {
+    onClickSelector && onClickSelector();
     event.target.classList.add("selected-card");
-    event.target.classList.remove(".card");
+    event.target.classList.remove("card");
+    console.log("it worked?");
   }
   return (
     <div
       hidden={isHidden}
-      onClick={(handleOnClick, onClickSelector)}
+      onClick={handleOnClick}
       style={styleDimensions}
       className={`card ${recursionCount === undefined && "selected-card"}`}
     >
@@ -28,7 +30,7 @@ export function Card({
       <div className="bottom-half">
         {recursionCount !== 0 && (
           <Cards
-            cardsInfo={["1", "2", "3", "4"]}
+            cardsInfo={["A", "B", "C", "D"]}
             levelsDeep={levelsDeep}
             recursionCount={recursionCount ?? levelsDeep}
           />
