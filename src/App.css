@@ -1,19 +1,20 @@
 .card {
   border: solid black 1px;
   border-radius: 5px;
-  flex-grow: 1;
-  aspect-ratio: 1/1;
+  height: 100%;
+  /* flex-grow: 1; */
+  /* aspect-ratio: 1/1; */
   /* max-width: 50%; BUG FIX ALERT */
 }
 
 .top-half {
   height: 50%;
-  width: 100%;
 }
 .bottom-half {
   border-radius: 5px;
   height: 50%;
   display: flex;
+
   align-items: center;
 }
 
@@ -35,4 +36,12 @@
   width: 100%;
   height: 100%;
   transition: height 1s, width 1s;
+}
+
+.unselected-card {
+}
+
+.selected-card {
+  border: solid orange 1px;
+  height: 100%;
 }

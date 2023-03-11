@@ -1,1 +1,1 @@
-export * from "./nullCheck";
+export * from "./throwNullOrUndefined";
